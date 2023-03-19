@@ -12,13 +12,14 @@ struct TimerView: View {
         return customTimer.timerState
     }
     @StateObject private var customTimer = CustomTimer(interval: 0.25, totalTime: 15)
+    @State var animateTimer: Bool = false
+    @State var animatePause: Bool = false
     var angularGradient: AngularGradient {
         AngularGradient(colors: [.red, .blue, .green, .red],
                         center: .center,
-                        angle: .degrees(animatingTime == true ? 360 : 0)
+                        angle: .degrees(animateTimer == true ? 360 : 0)
         )
     }
-    @State var animatingTime = false
     var body: some View {
         VStack {
             Text("\(playState.rawValue)")
@@ -45,36 +46,45 @@ struct TimerView: View {
                 .disabled(playState == .stop)
             }
             .padding(20)
-            Text("\(customTimer.remainingTime, specifier: "%2f")")
-                            .font(.largeTitle)
-                            .padding()
+            TimerDigitsView(digits: customTimer.digits)
         }
         .onChange(of: playState, perform: { newValue in
             switch newValue {
             case .play:
+                animatePause = false
                 withAnimation(.linear(duration: 1)
                     .repeatForever(autoreverses: false)
                 ) {
-                    animatingTime = true
+                    animateTimer = true
                 }
             case .pause:
+                animateTimer = false
+                withAnimation(.easeInOut(duration: 0.5)
+                    .repeatForever()
+                ) {
+                    animatePause = true
+                }
                 break
             case .stop:
+                animatePause = false
+                animateTimer = false
                 break
             }
         })
         .padding(20)
         .padding(.horizontal, 40)
         .overlay {
-            if animatingTime == false {
+            switch customTimer.timerState {
+            case .play:
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(angularGradient, lineWidth: 10)
+            case .pause:
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(.blue.opacity(animatePause ? 0.2 : 1.0), lineWidth: 10)
+            default:
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(.green, lineWidth: 5)
             }
-            else {
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(angularGradient, lineWidth: 10)
-            }
-            
         }
     }
     var remainingTime: Int {

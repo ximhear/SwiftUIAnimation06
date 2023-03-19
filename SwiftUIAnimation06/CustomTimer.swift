@@ -63,4 +63,18 @@ private let totalTime: TimeInterval
             }
         }
     }
+    
+    var digits: [Int] {
+        let r = Int(remainingTime * 100)
+        var seconds: Int
+        if r % 100 == 0 {
+            seconds = r / 100
+        }
+        else {
+            seconds = r / 100 + 1
+        }
+        let minutes = seconds / 60
+        seconds = seconds - minutes * 60
+        return [minutes / 10, minutes % 10, seconds / 10, seconds % 10]
+    }
 }
