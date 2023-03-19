@@ -11,6 +11,7 @@ enum TimerState: String {
 class CustomTimer: ObservableObject {
     @Published var remainingTime: TimeInterval
     @Published var timerState: TimerState = .stop
+    @Published var digits: [Int] = [0, 0, 0, 0]
     private var timerCancellable: AnyCancellable?
     private let interval: TimeInterval
 private let totalTime: TimeInterval
@@ -20,6 +21,7 @@ private let totalTime: TimeInterval
         self.interval = interval
         self.totalTime = totalTime
         self.remainingTime = totalTime
+        updateTime()
     }
 
     func start() {
@@ -58,23 +60,26 @@ private let totalTime: TimeInterval
             guard let self = self else { return }
             let elapsedTime = date.timeIntervalSince(self.startTime!)
             self.remainingTime = self.totalTime - elapsedTime
+            self.updateTime()
             if elapsedTime >= self.totalTime {
                 self.stop(finished: true)
             }
         }
     }
-    
-    var digits: [Int] {
-        let r = Int(remainingTime * 100)
-        var seconds: Int
-        if r % 100 == 0 {
-            seconds = r / 100
+   
+    func updateTime() {
+            let r = Int(remainingTime * 100)
+            var seconds: Int
+            if r % 100 == 0 {
+                seconds = r / 100
+            }
+            else {
+                seconds = r / 100 + 1
+            }
+            let minutes = seconds / 60
+            seconds = seconds - minutes * 60
+        withAnimation {[weak self] in
+            self?.digits = [minutes / 10, minutes % 10, seconds / 10, seconds % 10]
         }
-        else {
-            seconds = r / 100 + 1
-        }
-        let minutes = seconds / 60
-        seconds = seconds - minutes * 60
-        return [minutes / 10, minutes % 10, seconds / 10, seconds % 10]
     }
 }

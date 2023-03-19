@@ -42,7 +42,7 @@ struct SlidingNumber: View, Animatable {
 
 struct SlidingNumber_Previews: PreviewProvider {
     static var previews: some View {
-        SlidingNumber(number: 0)
+        SlidingNumber(number: 9)
     }
 }
 extension Int {
