@@ -46,7 +46,7 @@ struct TimerView: View {
                 .disabled(playState == .stop)
             }
             .padding(20)
-            TimerDigitsView(digits: customTimer.digits)
+            TimerDigitsView(digits: customTimer.digits, rawDigits: customTimer.rawDigits)
         }
         .onChange(of: playState, perform: { newValue in
             switch newValue {

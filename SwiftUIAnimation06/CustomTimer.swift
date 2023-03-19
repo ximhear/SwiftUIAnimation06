@@ -12,6 +12,7 @@ class CustomTimer: ObservableObject {
     @Published var remainingTime: TimeInterval
     @Published var timerState: TimerState = .stop
     @Published var digits: [Int] = [0, 0, 0, 0]
+    @Published var rawDigits: [Int] = [0, 0, 0, 0]
     private var timerCancellable: AnyCancellable?
     private let interval: TimeInterval
 private let totalTime: TimeInterval
@@ -52,6 +53,7 @@ private let totalTime: TimeInterval
         timerCancellable?.cancel()
         timerCancellable = nil
         remainingTime = finished ? 0 : totalTime
+        updateTime()
     }
 
     private func scheduleTimer(interval: TimeInterval) {
@@ -78,6 +80,7 @@ private let totalTime: TimeInterval
             }
             let minutes = seconds / 60
             seconds = seconds - minutes * 60
+        self.rawDigits = [minutes / 10, minutes % 10, seconds / 10, seconds % 10]
         withAnimation {[weak self] in
             self?.digits = [minutes / 10, minutes % 10, seconds / 10, seconds % 10]
         }
