@@ -17,6 +17,9 @@
 		EC820D0C29C6D5FF0009DD36 /* NumberTransitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC820D0B29C6D5FF0009DD36 /* NumberTransitionView.swift */; };
 		EC820D0E29C6D92A0009DD36 /* TimerDigitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC820D0D29C6D92A0009DD36 /* TimerDigitsView.swift */; };
 		EC820D1029C6DCEE0009DD36 /* SlidingNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC820D0F29C6DCEE0009DD36 /* SlidingNumber.swift */; };
+		ECA55BF729CEC13600376C0F /* PopupSelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA55BF629CEC13600376C0F /* PopupSelectionButton.swift */; };
+		ECA55BF929CED9E600376C0F /* AnimatedRadarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA55BF829CED9E600376C0F /* AnimatedRadarChart.swift */; };
+		ECA55BFB29CEE4EB00376C0F /* PolygonChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA55BFA29CEE4EB00376C0F /* PolygonChartView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,9 @@
 		EC820D0B29C6D5FF0009DD36 /* NumberTransitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTransitionView.swift; sourceTree = "<group>"; };
 		EC820D0D29C6D92A0009DD36 /* TimerDigitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerDigitsView.swift; sourceTree = "<group>"; };
 		EC820D0F29C6DCEE0009DD36 /* SlidingNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingNumber.swift; sourceTree = "<group>"; };
+		ECA55BF629CEC13600376C0F /* PopupSelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupSelectionButton.swift; sourceTree = "<group>"; };
+		ECA55BF829CED9E600376C0F /* AnimatedRadarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedRadarChart.swift; sourceTree = "<group>"; };
+		ECA55BFA29CEE4EB00376C0F /* PolygonChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolygonChartView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +72,9 @@
 				EC820D0729C6AB110009DD36 /* GZLog.swift */,
 				EC820CF529C6A4930009DD36 /* SwiftUIAnimation06App.swift */,
 				EC820CF729C6A4930009DD36 /* ContentView.swift */,
+				ECA55BF629CEC13600376C0F /* PopupSelectionButton.swift */,
+				ECA55BF829CED9E600376C0F /* AnimatedRadarChart.swift */,
+				ECA55BFA29CEE4EB00376C0F /* PolygonChartView.swift */,
 				EC820D0D29C6D92A0009DD36 /* TimerDigitsView.swift */,
 				EC820D0329C6A4CA0009DD36 /* TimerView.swift */,
 				EC820D0B29C6D5FF0009DD36 /* NumberTransitionView.swift */,
@@ -155,7 +164,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECA55BF929CED9E600376C0F /* AnimatedRadarChart.swift in Sources */,
+				ECA55BF729CEC13600376C0F /* PopupSelectionButton.swift in Sources */,
 				EC820D0C29C6D5FF0009DD36 /* NumberTransitionView.swift in Sources */,
+				ECA55BFB29CEE4EB00376C0F /* PolygonChartView.swift in Sources */,
 				EC820D1029C6DCEE0009DD36 /* SlidingNumber.swift in Sources */,
 				EC820D0629C6A93A0009DD36 /* CustomTimer.swift in Sources */,
 				EC820D0429C6A4CA0009DD36 /* TimerView.swift in Sources */,
