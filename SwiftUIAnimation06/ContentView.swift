@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State var temperature: Int = 0
     @State var ratio: Double?
+    @StateObject private var customTimer = CustomTimer(interval: 0.25, totalTime: 115)
     let values: [[Double]] = [
         [ 30, 78, 120, 30, 3.75 ],
         [ 90, 30, 180, 80, 4.75 ],
@@ -21,7 +22,7 @@ struct ContentView: View {
             NumberTransitionView(number: temperature, suffix: " °C")
                 .font(.title)
                 .bold()
-            TimerView()
+            TimerView(customTimer: customTimer)
             Spacer()
             HStack {
                 Spacer()
@@ -29,6 +30,7 @@ struct ContentView: View {
                 PopupSelectionButton(currentValue: $ratio, values: [1.0, 1.5, 2, 2.5, 3, 4, 5])
                 Spacer()
             }
+            AnalogTimerView(status: customTimer.timerState, timerEndTime: customTimer.endDate(), timer: customTimer)
             AnimatedRadarChart(
                 time: value[0],
                 temperature: value[1],

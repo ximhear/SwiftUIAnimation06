@@ -37,6 +37,10 @@ class CustomTimer: ObservableObject {
         timerState = .play
         scheduleTimer(interval: interval)
     }
+    
+    func endDate() -> Date? {
+        return startTime?.addingTimeInterval(totalTime)
+    }
 
     func pause() {
         if remainingTime == 0 {

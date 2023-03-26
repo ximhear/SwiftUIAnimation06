@@ -11,7 +11,7 @@ struct TimerView: View {
     var playState: TimerState {
         return customTimer.timerState
     }
-    @StateObject private var customTimer = CustomTimer(interval: 0.25, totalTime: 115)
+    @ObservedObject var customTimer: CustomTimer
     @State var animateTimer: Bool = false
     @State var animatePause: Bool = false
     var angularGradient: AngularGradient {
@@ -97,7 +97,8 @@ struct TimerView: View {
 }
 
 struct TimerView_Previews: PreviewProvider {
+    @State static var timer = CustomTimer(interval: 1, totalTime: 100)
     static var previews: some View {
-        TimerView()
+        TimerView(customTimer: timer)
     }
 }
