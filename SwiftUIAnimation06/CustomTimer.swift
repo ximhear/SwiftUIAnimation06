@@ -15,7 +15,7 @@ class CustomTimer: ObservableObject {
     @Published var rawDigits: [Int] = [0, 0, 0, 0]
     private var timerCancellable: AnyCancellable?
     private let interval: TimeInterval
-private let totalTime: TimeInterval
+    let totalTime: TimeInterval
     private var startTime: Date?
 
     init(interval: TimeInterval, totalTime: TimeInterval) {

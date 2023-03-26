@@ -36,6 +36,7 @@ struct ContentView: View {
                 amountTea: value[3],
                 rating: value[4]
             )
+            .frame(width: 100, height: 100)
             HStack {
                 Button {
                     withAnimation {
